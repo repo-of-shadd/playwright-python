@@ -1,3 +1,5 @@
+# This file will be used for debugging and experimentation at times
+
 from playwright.sync_api import sync_playwright
 
 with sync_playwright() as p:
