@@ -43,16 +43,16 @@ def test_add_to_cart_from_inventory(page: Page):
 def test_inventory_sorting(page: Page):
     # Verify the sorting functionality in Inventory Page
     base.login(page, 1)
-    alphabatically_1st_item = "Sauce Labs Backpack"
-    alphabatically_last_item = "Test.allTheThings() T-Shirt (Red)"
+    alphabetically_1st_item = "Sauce Labs Backpack"
+    alphabetically_last_item = "Test.allTheThings() T-Shirt (Red)"
     lowest_priced_item = "Sauce Labs Onesie"
     highest_priced_item = "Sauce Labs Fleece Jacket"
-    page.locator("xpath=//select[@class='product_sort_container']").select_option("hilo")
+    page.locator("xpath=//select[@class='product_sort_container']").select_option("hilo") # the select_option() function takes value or label for selection the options, we used values here
     assert page.locator("xpath=(//div[@class='inventory_item_description'])[1]//div[@class='inventory_item_name']").inner_text() == highest_priced_item, base.take_screenshot(page)
     page.locator("xpath=//select[@class='product_sort_container']").select_option("lohi")
     assert page.locator("xpath=(//div[@class='inventory_item_description'])[1]//div[@class='inventory_item_name']").inner_text() == lowest_priced_item, base.take_screenshot(page)
     page.locator("xpath=//select[@class='product_sort_container']").select_option("za")
-    assert page.locator("xpath=(//div[@class='inventory_item_description'])[1]//div[@class='inventory_item_name']").inner_text() == alphabatically_last_item, base.take_screenshot(page)
+    assert page.locator("xpath=(//div[@class='inventory_item_description'])[1]//div[@class='inventory_item_name']").inner_text() == alphabetically_last_item, base.take_screenshot(page)
     page.locator("xpath=//select[@class='product_sort_container']").select_option("az")
-    assert page.locator("xpath=(//div[@class='inventory_item_description'])[1]//div[@class='inventory_item_name']").inner_text() == alphabatically_1st_item, base.take_screenshot(page)
+    assert page.locator("xpath=(//div[@class='inventory_item_description'])[1]//div[@class='inventory_item_name']").inner_text() == alphabetically_1st_item, base.take_screenshot(page)
     base.logout(page)

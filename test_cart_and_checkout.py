@@ -21,6 +21,7 @@ def test_checkout_single_item_from_cart(page: Page):
 
 def test_checkout_multiple_items_from_cart(page: Page):
     # Verify checkout multiple items from Cart page
+    # Workflow -> Add 1st item to cart > navigate to inventory > add 2 more items to cart > remove 1 item from the added 3 > navigate to inventory > Navigate back to cart to see if the added items are still there > verify added items price is calculated properly > checkout
     base.login(page, 1)
     item_name_1 = "Sauce Labs Backpack"
     item_name_2 = "Sauce Labs Bike Light"
